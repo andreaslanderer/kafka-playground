@@ -1,0 +1,33 @@
+spring:
+  kafka:
+    bootstrap-servers: ${CLUSTER_URL}
+    properties:
+      auto:
+        register:
+          schemas: false
+      security:
+        protocol: SASL_SSL
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='${CLUSTER_API_KEY}' password='${CLUSTER_API_SECRET}';
+        mechanism: PLAIN
+      basic:
+        auth:
+          credentials.source: USER_INFO
+          user:
+            info: ${SR_API_KEY}:${SR_API_SECRET}
+      schema:
+        registry:
+          url: ${SR_URL}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    consumer:
+      group-id: kafka-playground-group-01
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific:
+          avro:
+            reader: true
