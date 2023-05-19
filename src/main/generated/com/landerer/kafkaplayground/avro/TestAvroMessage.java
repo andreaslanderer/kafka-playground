@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7295817478575488736L;
+  private static final long serialVersionUID = 3218856752866244687L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TestAvroMessage\",\"namespace\":\"com.landerer.kafkaplayground.avro\",\"fields\":[{\"name\":\"value\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TestAvroMessage\",\"namespace\":\"com.landerer.kafkaplayground.avro\",\"fields\":[{\"name\":\"value\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"luckyNumber\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -74,6 +74,7 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
   }
 
   private java.lang.CharSequence value;
+  private long luckyNumber;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -85,9 +86,11 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
   /**
    * All-args constructor.
    * @param value The new value for value
+   * @param luckyNumber The new value for luckyNumber
    */
-  public TestAvroMessage(java.lang.CharSequence value) {
+  public TestAvroMessage(java.lang.CharSequence value, java.lang.Long luckyNumber) {
     this.value = value;
+    this.luckyNumber = luckyNumber;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -96,6 +99,7 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return value;
+    case 1: return luckyNumber;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -105,6 +109,7 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: value = (java.lang.CharSequence)value$; break;
+    case 1: luckyNumber = (java.lang.Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -124,6 +129,23 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
    */
   public void setValue(java.lang.CharSequence value) {
     this.value = value;
+  }
+
+  /**
+   * Gets the value of the 'luckyNumber' field.
+   * @return The value of the 'luckyNumber' field.
+   */
+  public long getLuckyNumber() {
+    return luckyNumber;
+  }
+
+
+  /**
+   * Sets the value of the 'luckyNumber' field.
+   * @param value the value to set.
+   */
+  public void setLuckyNumber(long value) {
+    this.luckyNumber = value;
   }
 
   /**
@@ -168,6 +190,7 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
     implements org.apache.avro.data.RecordBuilder<TestAvroMessage> {
 
     private java.lang.CharSequence value;
+    private long luckyNumber;
 
     /** Creates a new Builder */
     private Builder() {
@@ -184,6 +207,10 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
         this.value = data().deepCopy(fields()[0].schema(), other.value);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
+      if (isValidValue(fields()[1], other.luckyNumber)) {
+        this.luckyNumber = data().deepCopy(fields()[1].schema(), other.luckyNumber);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
     }
 
     /**
@@ -195,6 +222,10 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
       if (isValidValue(fields()[0], other.value)) {
         this.value = data().deepCopy(fields()[0].schema(), other.value);
         fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.luckyNumber)) {
+        this.luckyNumber = data().deepCopy(fields()[1].schema(), other.luckyNumber);
+        fieldSetFlags()[1] = true;
       }
     }
 
@@ -238,12 +269,52 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
       return this;
     }
 
+    /**
+      * Gets the value of the 'luckyNumber' field.
+      * @return The value.
+      */
+    public long getLuckyNumber() {
+      return luckyNumber;
+    }
+
+
+    /**
+      * Sets the value of the 'luckyNumber' field.
+      * @param value The value of 'luckyNumber'.
+      * @return This builder.
+      */
+    public com.landerer.kafkaplayground.avro.TestAvroMessage.Builder setLuckyNumber(long value) {
+      validate(fields()[1], value);
+      this.luckyNumber = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'luckyNumber' field has been set.
+      * @return True if the 'luckyNumber' field has been set, false otherwise.
+      */
+    public boolean hasLuckyNumber() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'luckyNumber' field.
+      * @return This builder.
+      */
+    public com.landerer.kafkaplayground.avro.TestAvroMessage.Builder clearLuckyNumber() {
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public TestAvroMessage build() {
       try {
         TestAvroMessage record = new TestAvroMessage();
         record.value = fieldSetFlags()[0] ? this.value : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.luckyNumber = fieldSetFlags()[1] ? this.luckyNumber : (java.lang.Long) defaultValue(fields()[1]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -278,6 +349,8 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
   {
     out.writeString(this.value);
 
+    out.writeLong(this.luckyNumber);
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -287,11 +360,17 @@ public class TestAvroMessage extends org.apache.avro.specific.SpecificRecordBase
     if (fieldOrder == null) {
       this.value = in.readString(this.value instanceof Utf8 ? (Utf8)this.value : null);
 
+      this.luckyNumber = in.readLong();
+
     } else {
-      for (int i = 0; i < 1; i++) {
+      for (int i = 0; i < 2; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.value = in.readString(this.value instanceof Utf8 ? (Utf8)this.value : null);
+          break;
+
+        case 1:
+          this.luckyNumber = in.readLong();
           break;
 
         default:

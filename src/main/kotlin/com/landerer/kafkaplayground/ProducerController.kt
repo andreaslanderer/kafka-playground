@@ -11,8 +11,8 @@ class ProducerController(private val testTopicProducer: TestTopicProducer) {
 
     @PostMapping
     fun produceNewMessage(@RequestBody message: Message) {
-        this.testTopicProducer.send(message.key, message.value)
+        this.testTopicProducer.send(message.key, message.value, message.luckyNumber)
     }
 }
 
-data class Message(val key: String, val value: String)
+data class Message(val key: String, val value: String, val luckyNumber: Long)

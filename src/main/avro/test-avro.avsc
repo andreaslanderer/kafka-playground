@@ -6,6 +6,10 @@
         "avro.java.string": "String",
         "type": "string"
       }
+    },
+    {
+      "name": "luckyNumber",
+      "type": "long"
     }
   ],
   "name": "TestAvroMessage",
