@@ -10,6 +10,14 @@
     {
       "name": "luckyNumber",
       "type": "long"
+    },
+    {
+      "default": null,
+      "name": "age",
+      "type": [
+        "null",
+        "int"
+      ]
     }
   ],
   "name": "TestAvroMessage",

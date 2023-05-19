@@ -24,7 +24,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"key\": \"{{$guid}}\",\n    \"value\": \"test_message\",\n    \"luckyNumber\": 42\n}",
+					"raw": "{\n    \"key\": \"{{$guid}}\",\n    \"value\": \"test_message\",\n    \"luckyNumber\": 42,\n    \"age\": 13\n}",
 					"options": {
 						"raw": {
 							"language": "json"

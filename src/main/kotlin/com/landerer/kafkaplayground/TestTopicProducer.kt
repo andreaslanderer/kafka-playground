@@ -11,8 +11,8 @@ private val LOGGER = LoggerFactory.getLogger(TestTopicProducer::class.java)
 @Service
 class TestTopicProducer(private val kafkaTemplate: KafkaTemplate<String, TestAvroMessage>) {
 
-    fun send(key: String, message: String, luckyNumber: Long) {
+    fun send(key: String, message: String, luckyNumber: Long, age: Int) {
         LOGGER.info("Sending message: $message with key: $key to topic: $TOPIC")
-        kafkaTemplate.send(TOPIC, key, TestAvroMessage(message, luckyNumber))
+        kafkaTemplate.send(TOPIC, key, TestAvroMessage(message, luckyNumber, age))
     }
 }
